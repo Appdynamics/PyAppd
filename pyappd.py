@@ -5,15 +5,6 @@ import datetime
 import json
 import csv 
 
-#getName is used as a helper for sorting lists by name
-def getName(e):
-    return e['name']
-
-#getID is used as a helper for sorting lists by id
-def getID(e):
-    return e['id']
-
-
 
 class PyAppdApi:
     def __init__(self, controller, client, secret=None):
@@ -33,6 +24,16 @@ class PyAppdApi:
         for keyval in array:
             if value == keyval[key]:
                 return keyval
+
+    @staticmethod
+    def getName(e):
+        """getName is used as a helper for sorting lists by name"""
+        return e['name']
+
+    @staticmethod
+    def getID(e):
+        """#getID is used as a helper for sorting lists by id"""
+        return e['id']
 
     def getAccountName(self):
         '''
@@ -67,14 +68,14 @@ class PyAppdApi:
     def getApps(self, timeRange=None):
         headers = self.getAuthHeader()
         apps = requests.request("GET", self.controller+self.url+"?output=JSON", headers=headers).json()
-        apps.sort(key=getName)
+        apps.sort(key=self.getName)
         return apps
     
     def getTiers(self, app, timeRange=None):
         tierURL = self.controller+self.url+"/"+str(app['id'])+"/tiers?output=JSON"
         headers = self.getAuthHeader()        
         tiers = requests.request("GET", tierURL, headers=headers).json()
-        tiers.sort(key=getName)
+        tiers.sort(key=self.getName)
         return tiers
 
     def getNodes(self, app,tier=None,timeRange=None):
