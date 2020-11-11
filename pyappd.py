@@ -5,7 +5,6 @@ import datetime
 import json
 import csv 
 
-
 class PyAppdApi:
     def __init__(self, controller, client, secret=None):
         """ Initialize API Object"""
@@ -106,7 +105,6 @@ class PyAppdApi:
         nodeJVMDetail = requests.request("GET", nodeURL, headers=headers).json()
         #todo log status
         return nodeJVMDetail    
-    
     
     #getEvents
     def getEvents(self, app, eventTypes, timeRange=1440):
