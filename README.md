@@ -22,7 +22,7 @@ You must use an API client as opposed to user / password.
 
 
 ```python
-omf = PyAppdApi("https://onemain-test.saas.appdynamics.com", "TestRKR")
+omf = PyAppdApi("https://test.saas.appdynamics.com", "TestRKR")
 ```
 
     Enter Client Secret ····································
